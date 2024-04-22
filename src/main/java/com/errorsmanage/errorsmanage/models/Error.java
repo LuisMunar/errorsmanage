@@ -5,12 +5,12 @@ import java.util.Date;
 public class Error {
   private String message;
   private String error;
-  private Date date;
+  private Date timestamp;
 
-  public Error(String message, String error, Date date) {
+  public Error(String message, String error, Date timestamp) {
     this.message = message;
     this.error = error;
-    this.date = date;
+    this.timestamp = timestamp;
   }
 
   public String getMessage() {
@@ -30,10 +30,10 @@ public class Error {
   }
 
   public Date getDate() {
-    return date;
+    return timestamp;
   }
 
-  public void setDate(Date date) {
-    this.date = date;
+  public void setDate(Date timestamp) {
+    this.timestamp = timestamp;
   }
 }
