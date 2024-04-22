@@ -5,9 +5,14 @@ import java.util.Date;
 public class Error {
   private String message;
   private String error;
-  private int status;
   private Date date;
-  
+
+  public Error(String message, String error, Date date) {
+    this.message = message;
+    this.error = error;
+    this.date = date;
+  }
+
   public String getMessage() {
     return message;
   }
@@ -22,14 +27,6 @@ public class Error {
 
   public void setError(String error) {
     this.error = error;
-  }
-
-  public int getStatus() {
-    return status;
-  }
-
-  public void setStatus(int status) {
-    this.status = status;
   }
 
   public Date getDate() {
