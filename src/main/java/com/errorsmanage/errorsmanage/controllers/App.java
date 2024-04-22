@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class App {
   @GetMapping("")
   public String index() {
-    return "Greetings from Spring Boot!";
+    // int value = 1 / 0;
+    // return "Greetings from Spring Boot!";
+    try {
+      throw new Exception("This is an exception");
+    } catch (Exception e) {
+      return e.getMessage();
+    }
   }
 }
