@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
+import com.errorsmanage.errorsmanage.exceptions.UserNotFoundException;
 import com.errorsmanage.errorsmanage.models.User;
 import com.errorsmanage.errorsmanage.services.UserService;
 
@@ -38,6 +39,12 @@ public class App {
   @GetMapping("/users/{id}")
   public ResponseEntity<User> user(@PathVariable(name = "id") int id) {
     User user = userService.getUser(id);
+
+    if (user == null) {
+      throw new UserNotFoundException("User not found custom message");
+    }
+
+    user.getName();
     return user == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.status(HttpStatus.OK).body(user);
   }
 }
