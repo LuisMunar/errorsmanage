@@ -38,11 +38,11 @@ public class App {
 
   @GetMapping("/users/{id}")
   public ResponseEntity<User> user(@PathVariable(name = "id") int id) {
-    User user = userService.getUser(id);
+    User user = userService.getUser(id).orElseThrow(() -> new UserNotFoundException("User not found custom message"));
 
-    if (user == null) {
-      throw new UserNotFoundException("User not found custom message");
-    }
+    // if (user == null) {
+    //   throw new UserNotFoundException("User not found custom message");
+    // }
 
     user.getName();
     return user == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.status(HttpStatus.OK).body(user);
